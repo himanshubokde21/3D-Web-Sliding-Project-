@@ -1,0 +1,102 @@
+@import url('https://fonts.cdnfonts.com/ic-rubrik-black');
+@import url('https://fonts.cdnfonts.com/csss/poppins');
+.banner{
+    background-image: url(bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+.banner .slider{
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+@keyframes autoRun {
+    from{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+
+    }to{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+    
+}
+.banner .slider .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(550px);
+}
+.banner .slider .item img{
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+}
+.banner .content{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 100vw);
+    height: min-content;
+    padding-bottom: 100px;
+    display: inline;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: left;
+    z-index: 1;
+}
+.banner .content .author{
+    font-family: Poppins;
+    text-align: right;
+    max-width: 500px;
+    max-height: 400px;
+    
+}
+.banner .content h1{
+    align-items: center;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    font-family: Poppins;
+    font-size: 8em;
+    line-height: 0.5em;
+    color: #1e202c;
+}
+.banner .content h1::after{
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 2px #d2d2d2;
+    color: transparent;
+}
+.banner .content .author h2{
+    position: absolute;
+    bottom: 20%;
+    right: 0;
+    font-size: 2em;
+    right: 0;
+}
+
+.banner .content .model{
+    background-image: url(model.png);
+    width: 100%;
+    height: 75vh;
+    position: absolute;
+    bottom: 0;
+    background-size: auto 130%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 1;
+}
